@@ -36,7 +36,10 @@ public class Main {
             String line;
             while ((line = expectedFile.readLine()) != null && line.charAt(0) == '-'){
                 String[] keyValuePair = line.substring(1).split(":");
-                data.properties.put(keyValuePair[0],keyValuePair[1]);
+                if (keyValuePair[0].equals("neighbourID"))
+                    data.properties.put(keyValuePair[0] + keyValuePair[1],"");
+                else
+                    data.properties.put(keyValuePair[0],keyValuePair[1]);
                 expectedFile.mark(300);
             }
             expectedFile.reset();
