@@ -13,7 +13,10 @@ public class Main {
                     String prop;
                     boolean success = true;
                     while((prop = outputFile.readLine()) != null && prop.charAt(0) == '-'){
-                        String[] keyValuePair = prop.substring(1).split(":");
+                        prop = prop.substring(1);
+                        if (prop.charAt(0) == ' ')
+                            prop = prop.substring(1);
+                        String[] keyValuePair = prop.split(":");
                         if (keyValuePair[0].equals("neighbourID")) {
                             if (!data.properties.get(keyValuePair[0] + keyValuePair[1]).equals("")){
                                 success = false;
@@ -51,7 +54,10 @@ public class Main {
             data.className = expectedFile.readLine();
             String line;
             while ((line = expectedFile.readLine()) != null && line.charAt(0) == '-'){
-                String[] keyValuePair = line.substring(1).split(":");
+                line = line.substring(1);
+                if (line.charAt(0) == ' ')
+                    line = line.substring(1);
+                String[] keyValuePair = line.split(":");
                 if (keyValuePair[0].equals("neighbourID"))
                     data.properties.put(keyValuePair[0] + keyValuePair[1],"");
                 else
