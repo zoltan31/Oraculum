@@ -6,7 +6,7 @@ public class Main {
 
     public static boolean FindAndCompare(BufferedReader outputFile, ClassData data){
         try{
-            outputFile.mark(300);
+            outputFile.mark(30000);
             String oLine;
             while((oLine = outputFile.readLine()) != null){
                 if (oLine.equals(data.className)){
@@ -14,28 +14,32 @@ public class Main {
                     boolean success = true;
                     while((prop = outputFile.readLine()) != null && prop.charAt(0) == '-'){
                         String[] keyValuePair = prop.substring(1).split(":");
-                        if (data.properties.get(keyValuePair[0]) == null){
-                            success = false;
-                            break;
-                        }
                         if (keyValuePair[0].equals("neighbourID")) {
                             if (!data.properties.get(keyValuePair[0] + keyValuePair[1]).equals("")){
                                 success = false;
                                 break;
                             }
                         }
-                        if(keyValuePair[0].equals("neighbourID"))
-                        if (!data.properties.get(keyValuePair[0]).equals(keyValuePair[1])){
-                            success = false;
-                            break;
+                        else{
+                            if (data.properties.get(keyValuePair[0]) == null){
+                                success = false;
+                                break;
+                            }
+                            if (!data.properties.get(keyValuePair[0]).equals(keyValuePair[1])){
+                                success = false;
+                                break;
+                            }
                         }
+
                     }
-                    if (success)
-                     return true;
+                    if (success){
+                        outputFile.reset();
+                        return true;
+                    }
                 }
             }
             outputFile.reset();
-            return true;
+            return false;
         }catch(Exception e){
             return false;
         }
@@ -52,7 +56,7 @@ public class Main {
                     data.properties.put(keyValuePair[0] + keyValuePair[1],"");
                 else
                     data.properties.put(keyValuePair[0],keyValuePair[1]);
-                expectedFile.mark(300);
+                expectedFile.mark(30000);
             }
             expectedFile.reset();
             return data;
@@ -70,11 +74,10 @@ public class Main {
             BufferedReader expectedFile = new BufferedReader(new FileReader("Expected/" + words[0] + ".txt"));
             BufferedReader outputFile = new BufferedReader(new FileReader("Output/" + words[1] + ".txt"));
 
-            expectedFile.mark(300);
+            expectedFile.mark(30000);
             String line;
             while ((line = expectedFile.readLine()) != null){
                 expectedFile.reset();
-                //....
                 ClassData data = generateClassData(expectedFile);
                 if (data == null){
                     System.out.println("Problem reading class from: " + words[0] + ".txt");
@@ -85,7 +88,7 @@ public class Main {
                     System.out.println("Tests failed!");
                     return;
                 }
-                expectedFile.mark(300);
+                expectedFile.mark(30000);
             }
             System.out.println("Test succeeded!");
 

@@ -1,20 +1,34 @@
-SoftTile
+EndPoint
+-ID: 0
+-neighbourID: 1
+-startPointID: 4
+Tile
 -ID: 1
+-animalID: 0
 -neighbourID: 0
 -neighbourID: 2
--life: 2
-Tile
--ID: 0
--neighbourID: 1
--thingID: 0
 Tile
 -ID: 2
+-animalID: 1
 -neighbourID: 1
--animalID: 0
-ChocolateAutomat
+-neighbourID: 3
+Tile
+-ID: 3
+-animalID: 2
+-neighbourID: 2
+Tile
+-ID: 4
+Orangutan
 -ID: 0
--tileID: 0
--chance: 100 vagy 0
-JumpyPanda
--ID: 0
+-followerID: 1
+-tileID: 1
+-score: 0
+SleepyPanda
+-ID: 1
+-followerID: 2
 -tileID: 2
+-influencerID: 0
+SleepyPanda
+-ID: 2
+-tileID: 3
+-influencerID: 1
