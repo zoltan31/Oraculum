@@ -14,6 +14,17 @@ public class Main {
                     boolean success = true;
                     while((prop = outputFile.readLine()) != null && prop.charAt(0) == '-'){
                         String[] keyValuePair = prop.substring(1).split(":");
+                        if (data.properties.get(keyValuePair[0]) == null){
+                            success = false;
+                            break;
+                        }
+                        if (keyValuePair[0].equals("neighbourID")) {
+                            if (!data.properties.get(keyValuePair[0] + keyValuePair[1]).equals("")){
+                                success = false;
+                                break;
+                            }
+                        }
+                        if(keyValuePair[0].equals("neighbourID"))
                         if (!data.properties.get(keyValuePair[0]).equals(keyValuePair[1])){
                             success = false;
                             break;

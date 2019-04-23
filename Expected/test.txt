@@ -1,0 +1,20 @@
+SoftTile
+-ID: 1
+-neighbourID: 0
+-neighbourID: 2
+-life: 2
+Tile
+-ID: 0
+-neighbourID: 1
+-thingID: 0
+Tile
+-ID: 2
+-neighbourID: 1
+-animalID: 0
+ChocolateAutomat
+-ID: 0
+-tileID: 0
+-chance: 100 vagy 0
+JumpyPanda
+-ID: 0
+-tileID: 2
