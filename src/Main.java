@@ -15,6 +15,7 @@ public class Main {
                     while((prop = outputFile.readLine()) != null && prop.charAt(0) == '-'){
                         String[] keyValuePair = prop.substring(1).split(":");
                         if (!data.properties.get(keyValuePair[0]).equals(keyValuePair[1])){
+                            success = false;
                             break;
                         }
                     }
